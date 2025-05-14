@@ -1,5 +1,6 @@
 const { merge } = require('webpack-merge');
 const commonConfig = require('./webpack.common');
+const packageJson = require('../package.json');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
@@ -20,6 +21,7 @@ const devConfig = {
       exposes: {
         './MarketingApp': './src/bootstrap',
       },
+      shared: packageJson.dependencies,
     }),
     new HtmlWebpackPlugin({
       template: './public/index.html',
